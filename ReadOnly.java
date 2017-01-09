@@ -46,6 +46,8 @@ public class ReadOnly {
 			inp.close();
 			out.close();
 			interpretLoutsAndExit(louts);
+		} catch (IOException err) {
+			System.err.println("This tool needs admin privileges.");
 		} catch (Exception err) {
 			err.printStackTrace();
 		}
