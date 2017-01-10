@@ -23,7 +23,10 @@ public class ReadOnly {
 		readonly = readonly.replace("%", drive);
 		removeReadonly = removeReadonly.replace("%", drive);
 
-		String currentDir = new java.io.File(".").getCanonicalPath();
+		CodeSource codeSource = ReadOnly.class.getProtectionDomain().getCodeSource();
+		File jarFile = new File(codeSource.getLocation().toURI().getPath());
+		String currentDir = jarFile.getParentFile().getPath();
+
 		writeScriptFile(currentDir + "\\readonly", readonly);
 		writeScriptFile(currentDir + "\\removeReadonly", removeReadonly);
 
